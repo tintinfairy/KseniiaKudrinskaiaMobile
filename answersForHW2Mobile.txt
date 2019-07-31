@@ -1,7 +1,7 @@
 5. To run existing tests on real device in my project:
-	1. Open src/main/java/setup/DriverSetup.java
-	2. Find prepareDriver() method
-	3. In capabilities.setCapability(DEVICE_NAME, emulatorName) instead of "emulatorName" should be written "realDeviceName"
+	1. Open src/main/java/setup/testNativeData.properties (or testWebData.properties if you testing web app)
+	2. Find property "device"
+	3. set "device=realDeviceName" (for ex. device=HT7281202375) if you want to work with real device (device=emulator-xxxx for emulator)
 6. There is not big difference between working with emulator and working with real device.
 To work with real device:
 	1. Activate Developer mode on real device and debug USB connection (on emulator we should just run emulator)

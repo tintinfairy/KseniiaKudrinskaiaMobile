@@ -34,7 +34,7 @@ public class DriverSetup extends TestProperties {
     protected String SUT;
     private String platformName;
     private String driverAddress;
-    private String realDeviceName;
+    private String device;
     private String emulatorName;
     private String browser;
 
@@ -46,9 +46,7 @@ public class DriverSetup extends TestProperties {
         SUT = (testingSite == null) ? null : PROTOCOL.getElement() + testingSite;
         platformName = getProperty("platform");
         driverAddress = getProperty("driver");
-        realDeviceName = getProperty("real.device.name");
-        emulatorName = getProperty("emulator.name");
-
+        device = getProperty("device");
 
     }
 
@@ -79,7 +77,7 @@ public class DriverSetup extends TestProperties {
         capabilities = new DesiredCapabilities();
         switch (platformName) {
             case "Android": {
-                capabilities.setCapability(DEVICE_NAME, realDeviceName);
+                capabilities.setCapability(DEVICE_NAME, device);
                 capabilities.setCapability(PLATFORM_NAME, "Android");
                 browser = CHROME.getBrowserName();
                 setCapabilitiesDependingOnAppType();
