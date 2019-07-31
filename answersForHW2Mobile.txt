@@ -1,0 +1,15 @@
+5. To run existing tests on real device in my project:
+	1. Open src/main/java/setup/DriverSetup.java
+	2. Find prepareDriver() method
+	3. In capabilities.setCapability(DEVICE_NAME, emulatorName) instead of "emulatorName" should be written "realDeviceName"
+6. There is not big difference between working with emulator and working with real device.
+To work with real device:
+	1. Activate Developer mode on real device and debug USB connection (on emulator we should just run emulator)
+	2. Open Appium Desktop (similar for emulator)
+	3. Run server (run locally: 0.0.0.0:4723) (similar for emulator)
+	4. Click button with "Magnifire" image to start an Inspector session (similar for emulator)
+	5. Create desired capabilities using "deviceName":"realDeviceName" (for emulator "deviceName":"emulator-xxxx")
+	6. Click "Start Session" (similar for emulator)
+	7. Open project with test in Intellij-Idea (similar for emulator)
+	8. Dont't forget to make changes which are described in answer for question 5 (not required for emulator)
+	9. Run required tests

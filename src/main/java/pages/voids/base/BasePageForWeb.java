@@ -5,6 +5,10 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * Abstract class wh=ich extends by pages for Web App
+ * Because they have similar constructors
+ */
 public abstract class BasePageForWeb {
 
     protected AppiumDriver driver;

@@ -7,6 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.voids.base.BasePageForNative;
 
+/**
+ * Page to implement PageObject Pattern for Native App
+ * Includes elements search and actions with them
+ */
 public class AddContactPage extends BasePageForNative {
 
     @FindBy(id = "contactNameEditText")
@@ -35,13 +39,11 @@ public class AddContactPage extends BasePageForNative {
         saveButton.click();
     }
 
-    public void addContact(ContactNames name, ContactNumbers telNumber){
+    public void addContact(ContactNames name, ContactNumbers telNumber) {
         fillInContactNameField(name);
         fillInContactPhoneField(telNumber);
         clickSaveButton();
     }
-
-
 
 
 }

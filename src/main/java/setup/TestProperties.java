@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Class which works with data from property files
+ */
 public class TestProperties {
 
     private Properties properties;

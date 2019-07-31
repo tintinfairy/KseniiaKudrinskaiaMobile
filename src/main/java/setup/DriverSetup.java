@@ -6,8 +6,8 @@ import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.IOException;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -19,6 +19,11 @@ import static io.appium.java_client.remote.MobileCapabilityType.APP;
 import static io.appium.java_client.remote.MobileCapabilityType.DEVICE_NAME;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
+
+/**
+ * Class which sets up driver and it's capabilities
+ * According to chosen platform, device, browser etc.
+ */
 
 public class DriverSetup extends TestProperties {
 
@@ -47,6 +52,9 @@ public class DriverSetup extends TestProperties {
 
     }
 
+    /**
+     * Singleton pattern to have only one instance of driver
+     */
     protected AppiumDriver getDriver() throws MalformedURLException {
         if (null == driver) {
             driver = prepareDriver();
@@ -54,6 +62,9 @@ public class DriverSetup extends TestProperties {
         return driver;
     }
 
+    /**
+     * Singleton pattern to have only one instance of wait
+     */
     protected WebDriverWait getWebDriverWait() throws MalformedURLException {
         if (null == wait) {
             wait = new WebDriverWait(getDriver(), 10);
@@ -61,6 +72,9 @@ public class DriverSetup extends TestProperties {
         return wait;
     }
 
+    /**
+     * This method helps us to choose capabilities for chosen platform automatically
+     */
     private AppiumDriver prepareDriver() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
         switch (platformName) {
@@ -74,6 +88,7 @@ public class DriverSetup extends TestProperties {
             }
             case "iOS": {
                 browser = SAFARI.getBrowserName();
+                capabilities.setCapability(PLATFORM_NAME, "iOS");
                 setCapabilitiesDependingOnAppType();
                 driver = new IOSDriver(new URL(driverAddress), capabilities);
                 break;
@@ -84,7 +99,10 @@ public class DriverSetup extends TestProperties {
         return driver;
     }
 
-
+    /**
+     * This method guarantees that we have only one type of app
+     * There cannot be hybrid, only native or only web
+     */
     private void setCapabilitiesDependingOnAppType() {
         if (AUT != null && SUT == null) {
             File app = new File(AUT);

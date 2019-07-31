@@ -8,6 +8,12 @@ import pages.voids.base.BasePageForNative;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Page to implement PageObject Pattern for Native App
+ * Includes elements search and actions with them
+ */
+
+
 public class HomePage extends BasePageForNative {
 
     @FindBy(id = "addContactButton")

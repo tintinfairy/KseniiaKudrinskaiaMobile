@@ -9,6 +9,10 @@ import setup.DriverSetup;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+/**
+ * Class to implement hooks
+ */
+
 public class BaseTestHooks extends DriverSetup {
     protected AppiumDriver driver;
     protected WebDriverWait wait;
@@ -16,12 +20,19 @@ public class BaseTestHooks extends DriverSetup {
     public BaseTestHooks() throws IOException {
     }
 
+    /**
+     * Set up our environment: driver and wait
+     */
     @BeforeSuite
     public void setUp() throws MalformedURLException {
         driver = getDriver();
         wait = getWebDriverWait();
     }
 
+    /**
+     * Tear down connection
+     * Quit driver and make wait null
+     */
     @AfterSuite
     public void tearDown() {
         driver.quit();

@@ -6,6 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.voids.base.BasePageForWeb;
 
+/**
+ * Page to implement PageObject Pattern for Web App
+ * Includes elements search and actions with them
+ */
+
 public class HomePage extends BasePageForWeb {
 
     @FindBy(xpath = "/html/body/div[@class='homepage']/header")
@@ -22,7 +27,7 @@ public class HomePage extends BasePageForWeb {
         return headerText.getText();
     }
 
-    public void clickDomainNamesHref(){
+    public void clickDomainNamesHref() {
         domainNamesHref.click();
     }
 }
