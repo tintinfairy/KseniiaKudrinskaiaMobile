@@ -6,7 +6,6 @@ import java.util.Properties;
 
 public class TestProperties {
 
-    final static String FILE_PATH = "src/main/resources/testnative.properties";
     private Properties properties;
 
     Properties getCurrentProperties() throws IOException {

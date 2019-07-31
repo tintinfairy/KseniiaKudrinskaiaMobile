@@ -26,7 +26,7 @@ public class DriverSetup extends TestProperties {
     private WebDriverWait wait;
     private DesiredCapabilities capabilities;
     protected String AUT;
-    private String SUT;
+    protected String SUT;
     private String platformName;
     private String driverAddress;
     private String realDeviceName;
@@ -67,8 +67,8 @@ public class DriverSetup extends TestProperties {
             case "Android": {
                 capabilities.setCapability(DEVICE_NAME, realDeviceName);
                 capabilities.setCapability(PLATFORM_NAME, "Android");
-                setCapabilitiesDependingOnAppType();
                 browser = CHROME.getBrowserName();
+                setCapabilitiesDependingOnAppType();
                 driver = new AndroidDriver(new URL(driverAddress), capabilities);
                 break;
             }
