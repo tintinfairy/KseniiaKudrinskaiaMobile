@@ -35,7 +35,6 @@ public class DriverSetup extends TestProperties {
     private String platformName;
     private String driverAddress;
     private String device;
-    private String emulatorName;
     private String browser;
 
     public DriverSetup() throws IOException {
