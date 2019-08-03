@@ -47,6 +47,3 @@ public class NativeApplicationTest extends BaseTestHooks {
     }
 
 }
-
-
-
