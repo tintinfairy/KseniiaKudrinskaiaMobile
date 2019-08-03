@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Tests for Native applications">
+    <test name="Native Application test">
+        <classes>
+            <class name="scenarios.nativeTests.NativeApplicationTest"/>
+        </classes>
+    </test>
+</suite>

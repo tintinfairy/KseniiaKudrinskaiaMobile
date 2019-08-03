@@ -1,0 +1,4 @@
+1. Yes, it passes.
+3. There are some problems with android devices. Aplications stops after clicking "Save" button on Add Contact page.
+4. This approach doesn't work. Error from server appears.
+8. The improvement is to use steps with Page Object Pattern, not to call elements and driver directly. It was implemented. 
