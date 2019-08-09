@@ -22,7 +22,6 @@ public class HomePageSteps extends BaseTestHooks {
     }
 
     public void mainHeaderAssertion(String headerText) {
-       // homePage = new HomePage(driver, wait);
         assertEquals(homePage.getStringHeaderText(), headerText);
     }
 
