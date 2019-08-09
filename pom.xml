@@ -115,7 +115,6 @@
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <property>src/main/resources/${fileProperty}</property>
-                        <token>a552ed2d-e7a1-40b3-b448-c2f671b65513</token>
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>

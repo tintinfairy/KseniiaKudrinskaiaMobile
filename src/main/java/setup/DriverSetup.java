@@ -12,7 +12,6 @@ import java.net.URL;
 
 import static enums.BrowserNames.SAFARI;
 import static enums.DataToSetProperties.SITE_PROTOCOL;
-import static enums.DriverAddress.*;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_ACTIVITY;
 import static io.appium.java_client.remote.AndroidMobileCapabilityType.APP_PACKAGE;
 import static io.appium.java_client.remote.MobileCapabilityType.PLATFORM_NAME;
@@ -44,7 +43,7 @@ public class DriverSetup extends TestProperties {
         String testingSite = getProperty("sut");
         SUT = (testingSite == null) ? null : SITE_PROTOCOL.getElement() + testingSite;
         platformName = getProperty("platform");
-        driverAddress = PROTOCOL.getEntity() + APP_TYPE.getEntity() + token + MOBILE_CLOUD.getEntity();
+        driverAddress = getProperty("driverAddress");
         device = getProperty("device");
         appPackage = getProperty("appPackage");
         appActivity = getProperty("appActivity");
@@ -81,12 +80,14 @@ public class DriverSetup extends TestProperties {
         capabilities.setCapability(PLATFORM_NAME, platformName);
         switch (testType) {
             case "web": {
+                System.out.println("WEB");
                 browser = SAFARI.getBrowserName();
                 capabilities.setCapability(BROWSER_NAME, browser);
                 driver = new IOSDriver(new URL(driverAddress), capabilities);
                 break;
             }
             case "native": {
+                System.out.println("NATIVE");
                 capabilities.setCapability(APP_PACKAGE, appPackage);
                 capabilities.setCapability(APP_ACTIVITY, appActivity);
                 driver = new AndroidDriver(new URL(driverAddress), capabilities);

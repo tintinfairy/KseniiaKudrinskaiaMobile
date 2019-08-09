@@ -10,14 +10,12 @@ import java.util.Properties;
 public class TestProperties {
 
     private Properties properties;
-    protected String token;
 
     Properties getCurrentProperties() throws IOException {
         properties = new Properties();
         FileInputStream in = new FileInputStream(System.getProperty("property"));
         properties.load(in);
         in.close();
-        token = System.getProperty("token");
         return properties;
     }
 
