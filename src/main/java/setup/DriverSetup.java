@@ -74,10 +74,10 @@ public class DriverSetup extends TestProperties {
      */
     private AppiumDriver prepareDriver() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
+        capabilities.setCapability(PLATFORM_NAME, platformName);
         switch (platformName) {
             case "Android": {
                 capabilities.setCapability(DEVICE_NAME, device);
-                capabilities.setCapability(PLATFORM_NAME, "Android");
                 browser = CHROME.getBrowserName();
                 setCapabilitiesDependingOnAppType();
                 driver = new AndroidDriver(new URL(driverAddress), capabilities);
@@ -85,7 +85,6 @@ public class DriverSetup extends TestProperties {
             }
             case "iOS": {
                 browser = SAFARI.getBrowserName();
-                capabilities.setCapability(PLATFORM_NAME, "iOS");
                 setCapabilitiesDependingOnAppType();
                 driver = new IOSDriver(new URL(driverAddress), capabilities);
                 break;
