@@ -10,7 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.voids.base.BasePageForNative;
 import setup.DriverSetup;
 
-import java.net.MalformedURLException;
 import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,14 +57,15 @@ public class HomePage extends BasePageForNative {
                 .perform();
     }
 
-    public List<String> getStringContactList(){
+    public List<String> getStringContactList() {
         scrollDown();
         return contactList.stream().map(s -> s.getText()).collect(Collectors.toList());
     }
 
-    public boolean checkIfContactsAreShown(ContactNames name){
+    public boolean checkIfContactsAreShown(ContactNames name) {
         if (!getStringContactList().contains(name.getName())) {
             showInvisibleCheck.click();
+            checkIfContactsAreShown(name);
         }
         return true;
     }

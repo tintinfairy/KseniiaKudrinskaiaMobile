@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import setup.DriverSetup;
 
+import java.net.MalformedURLException;
+
 /**
  * Abstract class wh=ich extends by pages for Web App
  * Because they have similar constructors

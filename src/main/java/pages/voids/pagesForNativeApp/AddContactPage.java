@@ -21,7 +21,6 @@ public class AddContactPage extends BasePageForNative {
     @FindBy(id = "contactSaveButton")
     private WebElement saveButton;
 
-
     public void fillInContactNameField(ContactNames name) {
         contactNameField.sendKeys(name.getName());
     }

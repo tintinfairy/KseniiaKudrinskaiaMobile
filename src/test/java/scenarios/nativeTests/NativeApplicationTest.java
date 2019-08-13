@@ -10,8 +10,6 @@ import pages.voids.pagesForNativeApp.HomePage;
 
 import java.io.IOException;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 

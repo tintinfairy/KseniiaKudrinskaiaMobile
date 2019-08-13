@@ -6,8 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum ContactNames {
-    USER_1("Tom"),
-    USER_2("Jessy"),
-    USER_3("Sue");
+    USER_1("Tomas"),
+    USER_2("Jessica"),
+    USER_3("Susanna");
     private String name;
 }
