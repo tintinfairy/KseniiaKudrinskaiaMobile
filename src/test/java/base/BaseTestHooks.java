@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
  * Class to implement hooks
  */
 
-public class BaseTestHooks extends DriverSetup {
+public class BaseTestHooks extends DriverSetup{
     protected AppiumDriver driver;
     protected WebDriverWait wait;
 

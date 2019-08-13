@@ -28,14 +28,14 @@ import static org.openqa.selenium.remote.CapabilityType.PLATFORM_NAME;
 public class DriverSetup extends TestProperties {
 
     private static AppiumDriver driver;
-    private WebDriverWait wait;
-    private DesiredCapabilities capabilities;
-    protected String AUT;
-    protected String SUT;
-    private String platformName;
-    private String driverAddress;
-    private String device;
-    private String browser;
+    private static WebDriverWait wait;
+    private static DesiredCapabilities capabilities;
+    protected static String AUT;
+    protected static String SUT;
+    private static String platformName;
+    private static String driverAddress;
+    private static String device;
+    private static String browser;
 
     public DriverSetup() throws IOException {
 
@@ -52,7 +52,7 @@ public class DriverSetup extends TestProperties {
     /**
      * Singleton pattern to have only one instance of driver
      */
-    protected AppiumDriver getDriver() throws MalformedURLException {
+    public static AppiumDriver getDriver() throws MalformedURLException {
         if (null == driver) {
             driver = prepareDriver();
         }
@@ -62,7 +62,7 @@ public class DriverSetup extends TestProperties {
     /**
      * Singleton pattern to have only one instance of wait
      */
-    protected WebDriverWait getWebDriverWait() throws MalformedURLException {
+    public static WebDriverWait getWebDriverWait() throws MalformedURLException {
         if (null == wait) {
             wait = new WebDriverWait(getDriver(), 10);
         }
@@ -72,7 +72,7 @@ public class DriverSetup extends TestProperties {
     /**
      * This method helps us to choose capabilities for chosen platform automatically
      */
-    private AppiumDriver prepareDriver() throws MalformedURLException {
+    private static AppiumDriver prepareDriver() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability(PLATFORM_NAME, platformName);
         switch (platformName) {
@@ -99,7 +99,7 @@ public class DriverSetup extends TestProperties {
      * This method guarantees that we have only one type of app
      * There cannot be hybrid, only native or only web
      */
-    private void setCapabilitiesDependingOnAppType() {
+    private static void setCapabilitiesDependingOnAppType() {
         if (AUT != null && SUT == null) {
             File app = new File(AUT);
             capabilities.setCapability(APP, app.getAbsolutePath());

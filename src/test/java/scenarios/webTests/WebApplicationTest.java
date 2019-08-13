@@ -27,12 +27,12 @@ public class WebApplicationTest extends BaseTestHooks {
         String domainPageHeader = "Domain Name Services";
         //Open web page
         driver.get(SUT);
-        HomePage homePage = new HomePage(driver, wait);
+        HomePage homePage = new HomePage();
         //Assert that "Home page" has expected header
         assertEquals(homePage.getStringHeaderText(), headerText);
         //Click on "Domain Name" clickable link
         homePage.clickDomainNamesHref();
-        DomainNamesPage domainNamesPage = new DomainNamesPage(driver, wait);
+        DomainNamesPage domainNamesPage = new DomainNamesPage();
         //Assert that header on "Domain Names" page has expected header
         assertEquals(domainNamesPage.getStringPageHeader(), domainPageHeader);
 

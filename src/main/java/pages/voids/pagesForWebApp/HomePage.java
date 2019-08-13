@@ -1,9 +1,7 @@
 package pages.voids.pagesForWebApp;
 
-import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.voids.base.BasePageForWeb;
 
 /**
@@ -19,9 +17,6 @@ public class HomePage extends BasePageForWeb {
     @FindBy(xpath = "//*[@id='home-panel-domains']/h2/a")
     private WebElement domainNamesHref;
 
-    public HomePage(AppiumDriver driver, WebDriverWait wait) {
-        super(driver, wait);
-    }
 
     public String getStringHeaderText() {
         return headerText.getText();
