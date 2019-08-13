@@ -3,6 +3,7 @@ package scenarios.nativeTests;
 import base.BaseTestHooks;
 import enums.ContactNames;
 import enums.ContactNumbers;
+import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.Test;
 import pages.voids.pagesForNativeApp.AddContactPage;
 import pages.voids.pagesForNativeApp.HomePage;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Test class
@@ -32,7 +34,8 @@ public class NativeApplicationTest extends BaseTestHooks {
 
         //Add first contact parameters
         contactPage.addContact(ContactNames.USER_1, ContactNumbers.USER_1);
-        //assertTrue(driver.is);
+        //Checking that keyboard appears
+        assertTrue(((AndroidDriver) driver).isKeyboardShown());
         //Click Save button
         contactPage.clickSaveButton();
         //Check if contact is invisible click Show Invisible contacts checkbox (if it is not clicked yet)
@@ -42,6 +45,8 @@ public class NativeApplicationTest extends BaseTestHooks {
         homePage.clickAddContactButton();
         //Add second contact parameters
         contactPage.addContact(ContactNames.USER_2, ContactNumbers.USER_2);
+        //Checking that keyboard appears
+        assertTrue(((AndroidDriver) driver).isKeyboardShown());
         //Click Save button
         contactPage.clickSaveButton();
         //Check if contact is invisible click Show Invisible contacts checkbox (if it is not clicked yet)
@@ -51,6 +56,8 @@ public class NativeApplicationTest extends BaseTestHooks {
         homePage.clickAddContactButton();
         //Add third contact parameters
         contactPage.addContact(ContactNames.USER_3, ContactNumbers.USER_3);
+        //Checking that keyboard appears
+        assertTrue(((AndroidDriver) driver).isKeyboardShown());
         //Click Save button
         contactPage.clickSaveButton();
         //Check if contact is invisible click Show Invisible contacts checkbox (if it is not clicked yet)
