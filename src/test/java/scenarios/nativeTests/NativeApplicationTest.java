@@ -38,8 +38,7 @@ public class NativeApplicationTest extends BaseTestHooks {
         assertTrue(((AndroidDriver) driver).isKeyboardShown());
         //Click Save button
         contactPage.clickSaveButton();
-        //Check if contact is invisible click Show Invisible contacts checkbox (if it is not clicked yet)
-        homePage.checkIfContactIsInvisible(ContactNames.USER_1);
+
 
         //Click AddContact button to add contact
         homePage.clickAddContactButton();
@@ -49,8 +48,7 @@ public class NativeApplicationTest extends BaseTestHooks {
         assertTrue(((AndroidDriver) driver).isKeyboardShown());
         //Click Save button
         contactPage.clickSaveButton();
-        //Check if contact is invisible click Show Invisible contacts checkbox (if it is not clicked yet)
-        homePage.checkIfContactIsInvisible(ContactNames.USER_2);
+
 
         //Click AddContact button to add contact
         homePage.clickAddContactButton();
@@ -60,13 +58,12 @@ public class NativeApplicationTest extends BaseTestHooks {
         assertTrue(((AndroidDriver) driver).isKeyboardShown());
         //Click Save button
         contactPage.clickSaveButton();
-        //Check if contact is invisible click Show Invisible contacts checkbox (if it is not clicked yet)
-        homePage.checkIfContactIsInvisible(ContactNames.USER_3);
+
 
         //Assert that added contacts are in contact list
-        assertThat(homePage.getStringContactList(), hasItem(ContactNames.USER_1.getName()));
-        assertThat(homePage.getStringContactList(), hasItem(ContactNames.USER_2.getName()));
-        assertThat(homePage.getStringContactList(), hasItem(ContactNames.USER_3.getName()));
+        assertTrue(homePage.checkIfContactsAreShown(ContactNames.USER_1));
+        assertTrue(homePage.checkIfContactsAreShown(ContactNames.USER_2));
+        assertTrue(homePage.checkIfContactsAreShown(ContactNames.USER_3));
 
     }
 

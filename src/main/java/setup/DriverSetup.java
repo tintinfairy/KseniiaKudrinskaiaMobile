@@ -52,9 +52,13 @@ public class DriverSetup extends TestProperties {
     /**
      * Singleton pattern to have only one instance of driver
      */
-    public static AppiumDriver getDriver() throws MalformedURLException {
-        if (null == driver) {
-            driver = prepareDriver();
+    public static AppiumDriver getDriver() {
+        try {
+            if (null == driver) {
+                driver = prepareDriver();
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
         return driver;
     }
@@ -62,7 +66,7 @@ public class DriverSetup extends TestProperties {
     /**
      * Singleton pattern to have only one instance of wait
      */
-    public static WebDriverWait getWebDriverWait() throws MalformedURLException {
+    public static WebDriverWait getWebDriverWait() {
         if (null == wait) {
             wait = new WebDriverWait(getDriver(), 10);
         }

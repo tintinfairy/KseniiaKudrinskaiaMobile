@@ -7,13 +7,12 @@ import org.testng.annotations.BeforeSuite;
 import setup.DriverSetup;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 /**
  * Class to implement hooks
  */
 
-public class BaseTestHooks extends DriverSetup{
+public class BaseTestHooks extends DriverSetup {
     protected AppiumDriver driver;
     protected WebDriverWait wait;
 
@@ -24,7 +23,7 @@ public class BaseTestHooks extends DriverSetup{
      * Set up our environment: driver and wait
      */
     @BeforeSuite
-    public void setUp() throws MalformedURLException {
+    public void setUp() {
         driver = getDriver();
         wait = getWebDriverWait();
     }
