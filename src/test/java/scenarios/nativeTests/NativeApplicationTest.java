@@ -13,11 +13,12 @@ import java.io.IOException;
  * Test class
  * With PageObject Pattern implementation
  */
+
+@Test(groups = "native")
 public class NativeApplicationTest extends BaseTestHooks {
     public NativeApplicationTest() throws IOException {
     }
 
-    @Test(description = "This test asserts page title, adds contacts and check that appropriate contacts were added")
     public void simpleTestsOnNativeApplication() throws IOException {
         HomePageSteps homePageSteps = new HomePageSteps();
         //Assert that page has expected title
@@ -27,14 +28,29 @@ public class NativeApplicationTest extends BaseTestHooks {
         AddContactPageSteps contactPageSteps = new AddContactPageSteps();
         //Add first contact parameters
         contactPageSteps.addContact(ContactNames.USER_1, ContactNumbers.USER_1);
+        //Checking that keyboard appears
+        contactPageSteps.keyboardAppearanceAssertion();
+        //Click Save button
+        contactPageSteps.clickSaveButton();
+
         //Click AddContact button to add contact
         homePageSteps.clickContactButton();
         //Add second contact parameters
         contactPageSteps.addContact(ContactNames.USER_2, ContactNumbers.USER_2);
+        //Checking that keyboard appears
+        contactPageSteps.keyboardAppearanceAssertion();
+        //Click Save button
+        contactPageSteps.clickSaveButton();
+
         //Click AddContact button to add contact
         homePageSteps.clickContactButton();
         //Add third contact parameters
         contactPageSteps.addContact(ContactNames.USER_3, ContactNumbers.USER_3);
+        //Checking that keyboard appears
+        contactPageSteps.keyboardAppearanceAssertion();
+        //Click Save button
+        contactPageSteps.clickSaveButton();
+
         //Assert that added contacts are in contact list
         homePageSteps.chosenContactIsAdded(ContactNames.USER_1);
         homePageSteps.chosenContactIsAdded(ContactNames.USER_2);

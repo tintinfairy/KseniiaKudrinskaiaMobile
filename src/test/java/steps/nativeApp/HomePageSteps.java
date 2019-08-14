@@ -6,9 +6,8 @@ import pages.voids.pagesForNativeApp.HomePage;
 
 import java.io.IOException;
 
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Test class
@@ -16,8 +15,9 @@ import static org.testng.Assert.assertEquals;
  */
 public class HomePageSteps extends BaseTestHooks {
     static HomePage homePage;
+
     public HomePageSteps() throws IOException {
-        homePage = new HomePage(driver);
+        homePage = new HomePage();
     }
 
     public void expectedTitleAssertion(String title) {
@@ -28,7 +28,8 @@ public class HomePageSteps extends BaseTestHooks {
         homePage.clickAddContactButton();
     }
 
+
     public void chosenContactIsAdded(ContactNames name) {
-        assertThat(homePage.getStringContactList(), hasItem(name.getName()));
+        assertTrue(homePage.checkIfContactsAreShown(name));
     }
 }

@@ -13,8 +13,9 @@ import static org.testng.Assert.assertEquals;
  */
 public class DomainNamesPageSteps extends BaseTestHooks {
     DomainNamesPage domainNamesPage;
+
     public DomainNamesPageSteps() throws IOException {
-        domainNamesPage = new DomainNamesPage(driver, wait);
+        domainNamesPage = new DomainNamesPage();
     }
 
     public void mainHeaderAssertion(String domainPageHeader) {

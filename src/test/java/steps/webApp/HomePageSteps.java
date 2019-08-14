@@ -6,6 +6,7 @@ import pages.voids.pagesForWebApp.HomePage;
 import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
+
 /**
  * Test class
  * With Steps Pattern implementation
@@ -13,8 +14,9 @@ import static org.testng.Assert.assertEquals;
 public class HomePageSteps extends BaseTestHooks {
 
     HomePage homePage;
+
     public HomePageSteps() throws IOException {
-        homePage = new HomePage(driver, wait);
+        homePage = new HomePage();
     }
 
     public void openWebPage(String page) {
@@ -25,7 +27,7 @@ public class HomePageSteps extends BaseTestHooks {
         assertEquals(homePage.getStringHeaderText(), headerText);
     }
 
-    public void clickDomainNamesHref(){
+    public void clickDomainNamesHref() {
         homePage.clickDomainNamesHref();
     }
 }

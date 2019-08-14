@@ -1,6 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Tests for Native applications">
+    <groups>
+        <run>
+            <include name="native"/>
+        </run>
+    </groups>
     <test name="Native Application test">
         <classes>
             <class name="scenarios.nativeTests.NativeApplicationTest"/>

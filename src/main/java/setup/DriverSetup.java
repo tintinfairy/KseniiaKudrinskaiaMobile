@@ -26,20 +26,20 @@ import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 public class DriverSetup extends TestProperties {
 
     private static AppiumDriver driver;
-    private WebDriverWait wait;
-    private DesiredCapabilities capabilities;
-    protected String SUT;
-    private String platformName;
-    private String driverAddress;
-    private String device;
-    private String browser;
-    private String appPackage;
-    private String appActivity;
-    private String testType;
+    private static WebDriverWait wait;
+    private static DesiredCapabilities capabilities;
+    protected static String SUT;
+    private static String platformName;
+    private static String driverAddress;
+    private static String device;
+    private static String browser;
+    private static String appPackage;
+    private static String appActivity;
+    private static String AUT;
 
     public DriverSetup() throws IOException {
 
-        testType = getProperty("testType");
+        AUT = getProperty("aut");
         String testingSite = getProperty("sut");
         SUT = (testingSite == null) ? null : SITE_PROTOCOL.getElement() + testingSite;
         platformName = getProperty("platform");
@@ -54,9 +54,13 @@ public class DriverSetup extends TestProperties {
     /**
      * Singleton pattern to have only one instance of driver
      */
-    protected AppiumDriver getDriver() throws MalformedURLException {
-        if (null == driver) {
-            driver = prepareDriver();
+    public static AppiumDriver getDriver() {
+        try {
+            if (null == driver) {
+                driver = prepareDriver();
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
         return driver;
     }
@@ -64,7 +68,7 @@ public class DriverSetup extends TestProperties {
     /**
      * Singleton pattern to have only one instance of wait
      */
-    protected WebDriverWait getWebDriverWait() throws MalformedURLException {
+    public static WebDriverWait getWebDriverWait() {
         if (null == wait) {
             wait = new WebDriverWait(getDriver(), 10);
         }
@@ -74,22 +78,21 @@ public class DriverSetup extends TestProperties {
     /**
      * This method helps us to choose capabilities for chosen platform automatically
      */
-    private AppiumDriver prepareDriver() throws MalformedURLException {
+    private static AppiumDriver prepareDriver() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability(UDID, device);
         capabilities.setCapability(PLATFORM_NAME, platformName);
-        switch (testType) {
-            case "web": {
+        switch (platformName) {
+            case "iOS": {
                 System.out.println("WEB");
                 browser = SAFARI.getBrowserName();
-                capabilities.setCapability(BROWSER_NAME, browser);
+                setCapabilitiesDependingOnAppType();
                 driver = new IOSDriver(new URL(driverAddress), capabilities);
                 break;
             }
-            case "native": {
+            case "Android": {
                 System.out.println("NATIVE");
-                capabilities.setCapability(APP_PACKAGE, appPackage);
-                capabilities.setCapability(APP_ACTIVITY, appActivity);
+                setCapabilitiesDependingOnAppType();
                 driver = new AndroidDriver(new URL(driverAddress), capabilities);
                 break;
             }
@@ -99,5 +102,19 @@ public class DriverSetup extends TestProperties {
         return driver;
     }
 
-
+    private static void setCapabilitiesDependingOnAppType() {
+        if (AUT != null && SUT == null) {
+            capabilities.setCapability(APP_PACKAGE, appPackage);
+            capabilities.setCapability(APP_ACTIVITY, appActivity);
+        } else if (SUT != null && AUT == null) {
+            capabilities.setCapability(BROWSER_NAME, browser);
+        } else {
+            throw new IllegalArgumentException("Unclear type of mobile app");
+        }
+    }
 }
+
+
+
+
+

@@ -1,6 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Tests for Web applications">
+    <groups>
+        <run>
+            <include name="web"/>
+        </run>
+    </groups>
     <test name="Web Application test">
         <classes>
             <class name="scenarios.webTests.WebApplicationTest"/>
